@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="เว็บไซต์วิชาวิทยาการคำนวณ เรื่อง ปัญญาประดิษฐ์ (AI) กับการพัฒนาเกม">
+<title>AI กับการพัฒนาเกม</title>
+<style>
+:root{
+  --bg:#07111f; --panel:#0f172a; --blue:#0284c7; --cyan:#38bdf8;
+  --text:#1e293b; --muted:#64748b; --paper:#f8fafc; --line:#cbd5e1;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:20px}
+body{background:var(--bg);font-family:Tahoma,"Noto Sans Thai",Arial,sans-serif;color:var(--text)}
+.skip-link{position:fixed;top:12px;left:12px;z-index:20;transform:translateY(-170%);padding:10px 14px;background:#fef08a;color:#082f49;border-radius:7px;font-weight:bold;text-decoration:none;box-shadow:0 5px 16px rgba(0,0,0,.28);transition:transform .2s}
+.skip-link:focus{transform:translateY(0);outline:3px solid white;outline-offset:2px}
+.container{width:1100px;max-width:100%;margin:0 auto;background:white;box-shadow:0 0 28px rgba(0,0,0,.45)}
+header{position:relative;min-height:390px;overflow:hidden;background:#071426;color:white;display:grid;grid-template-columns:1.08fr .92fr;align-items:center}
+.header-copy{padding:55px 35px 55px 58px;z-index:2}
+.header-visual{height:100%;min-height:390px;position:relative;overflow:hidden}
+.header-visual img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.9) contrast(1.02)}
+.header-visual:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#071426 0%,rgba(7,20,38,.15) 50%,rgba(7,20,38,.05) 100%)}
+.header-badge{display:inline-block;border:1px solid var(--cyan);color:#7dd3fc;padding:7px 16px;border-radius:999px;font-size:14px;margin-bottom:18px}
+header h1{font-size:48px;line-height:1.15;margin-bottom:16px} header h1 span{color:var(--cyan)}
+header p{color:#cbd5e1;font-size:18px;line-height:1.8;max-width:580px}
+.main-layout{display:flex;align-items:stretch}
+nav{width:245px;background:var(--panel);color:white;flex-shrink:0}
+.nav-inner{position:sticky;top:0}
+nav h2{background:var(--blue);padding:20px;text-align:center;font-size:22px}
+nav ul{list-style:none} nav li{border-bottom:1px solid #334155}
+nav a{display:block;padding:15px 17px;color:#e2e8f0;text-decoration:none;transition:.2s}
+nav a:hover{background:var(--cyan);color:#082f49;padding-left:25px}
+nav a:focus-visible{background:var(--cyan);color:#082f49;padding-left:25px;outline:3px solid #fef08a;outline-offset:-3px}
+.menu-number{color:var(--cyan);margin-right:7px;font-weight:bold} nav a:hover .menu-number,nav a:focus-visible .menu-number{color:#082f49}
+article{flex:1;background:var(--paper);padding:42px 42px 55px}
+.intro-heading{color:#0c4a6e;font-size:36px;margin-bottom:15px}
+article h2{color:#0369a1;font-size:27px;margin-top:44px;margin-bottom:18px;padding-bottom:10px;border-bottom:3px solid var(--cyan)}
+article h3{color:#075985;margin-bottom:9px}
+article p{line-height:1.9;margin-bottom:15px;font-size:16px}
+.label{color:var(--blue);font-size:13px;font-weight:bold;letter-spacing:1.8px;text-transform:uppercase;margin-bottom:6px}
+.intro{background:#e0f2fe;border-left:6px solid var(--blue);padding:22px;margin:20px 0 30px;border-radius:0 10px 10px 0}
+.visual{margin:24px 0 28px;background:#081321;border:1px solid #cbd5e1;border-radius:14px;overflow:hidden;box-shadow:0 5px 18px rgba(15,23,42,.12)}
+.visual img{display:block;width:100%;height:auto;aspect-ratio:12/7}.visual figcaption{background:white;color:#64748b;padding:10px 14px;font-size:13px;text-align:center}
+.card-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:24px 0}
+.card{background:white;border:1px solid var(--line);border-radius:12px;padding:20px;box-shadow:0 3px 8px rgba(0,0,0,.06)}
+.card-icon{width:44px;height:44px;border-radius:50%;background:#e0f2fe;color:var(--blue);display:flex;align-items:center;justify-content:center;font-weight:bold;margin-bottom:11px}.card p{color:#475569;font-size:14px;margin:0}
+.process{margin:24px 0;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}.process-box{background:var(--panel);color:white;padding:13px 16px;border-radius:8px;min-width:110px;text-align:center}.arrow{color:var(--blue);font-weight:bold;font-size:22px}
+.info-box{padding:20px;margin:20px 0;background:#ecfeff;border:1px solid #67e8f9;border-radius:10px}.info-box strong{color:#0369a1}
+.dual-visual{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}.dual-visual figure{margin:0}
+.custom-list{margin:18px 0 20px 25px}.custom-list li{padding:6px 0;line-height:1.7}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:25px 0}.good,.bad{padding:22px;border-radius:12px}.good{background:#ecfdf5;border:1px solid #86efac}.bad{background:#fff1f2;border:1px solid #fda4af}.good h3{color:#15803d}.bad h3{color:#be123c}
+.future{background:linear-gradient(135deg,#082f49,#172554);color:white;padding:28px;margin-top:24px;border-radius:15px}.future h3{color:#7dd3fc;font-size:24px}.future p{color:#e2e8f0}
+.summary{margin-top:42px;padding:30px;background:var(--panel);color:white;border-radius:15px}.summary h2{border:0;padding:0;margin-top:0;color:var(--cyan)}.summary p{color:#e2e8f0}.top-button{display:inline-block;margin-top:15px;padding:10px 20px;background:var(--blue);color:white;text-decoration:none;border-radius:7px}.top-button:hover{background:var(--cyan);color:#082f49}.top-button:focus-visible{outline:3px solid #fef08a;outline-offset:3px}
+footer{background:#020617;color:white;padding:30px;text-align:center;line-height:1.8}footer strong{color:var(--cyan)}
+@media(max-width:820px){header{grid-template-columns:1fr}.header-copy{padding:38px 26px}.header-visual{min-height:260px}.main-layout{display:block}nav{width:100%}.nav-inner{position:static}nav ul{display:grid;grid-template-columns:repeat(3,1fr)}article{padding:30px 24px}.dual-visual{grid-template-columns:1fr}}
+@media(max-width:560px){header h1{font-size:34px}header p{font-size:16px}nav ul{grid-template-columns:repeat(2,1fr)}.intro-heading{font-size:29px}.card-grid,.compare{grid-template-columns:1fr}}
+@media(max-width:390px){nav ul{grid-template-columns:1fr}}
+</style>
+</head>
+<body id="top">
+<a class="skip-link" href="#main-content">ข้ามไปยังเนื้อหาหลัก</a>
+<div class="container">
+<header>
+  <div class="header-copy">
+    <div class="header-badge">วิชาวิทยาการคำนวณ</div>
+    <h1><span>AI</span> กับการพัฒนาเกม</h1>
+    <p>เรียนรู้ว่า AI ถูกนำมาใช้ในเกมอย่างไร ตั้งแต่การควบคุม NPC การหาเส้นทางและการตัดสินใจ ไปจนถึงการสร้างเนื้อหาและการช่วยนักพัฒนาเกม</p>
+  </div>
+  <div class="header-visual"><img src="images/header-ai.png" width="1200" height="700" fetchpriority="high" alt="ภาพประกอบ AI และการพัฒนาเกม"></div>
+</header>
+<main id="main-content" class="main-layout">
+<nav aria-label="สารบัญ"><div class="nav-inner"><h2>สารบัญ</h2><ul>
+<li><a href="#home"><span class="menu-number">01</span>หน้าแรก</a></li>
+<li><a href="#meaning"><span class="menu-number">02</span>AI ในเกม</a></li>
+<li><a href="#npc"><span class="menu-number">03</span>NPC</a></li>
+<li><a href="#pathfinding"><span class="menu-number">04</span>Pathfinding</a></li>
+<li><a href="#decision"><span class="menu-number">05</span>การตัดสินใจ</a></li>
+<li><a href="#generation"><span class="menu-number">06</span>สร้างเนื้อหา</a></li>
+<li><a href="#development"><span class="menu-number">07</span>พัฒนาเกม</a></li>
+<li><a href="#benefits"><span class="menu-number">08</span>ข้อดี/ข้อจำกัด</a></li>
+<li><a href="#future"><span class="menu-number">09</span>อนาคต</a></li>
+<li><a href="#summary"><span class="menu-number">10</span>สรุป</a></li>
+</ul></div></nav>
+<article>
+<section id="home"><p class="label">Artificial Intelligence</p><h2 class="intro-heading">ปัญญาประดิษฐ์กับโลกของเกม</h2><div class="intro"><p>เว็บไซต์นี้อธิบายการนำปัญญาประดิษฐ์ หรือ AI มาใช้ในเกม ตั้งแต่การควบคุมตัวละคร NPC การตัดสินใจ การหาเส้นทาง ไปจนถึงการช่วยนักพัฒนาออกแบบเกม โดยเน้นเนื้อหาที่เข้าใจง่ายและมีตัวอย่างประกอบ</p></div></section>
+
+<section id="meaning"><p class="label">Section 01</p><h2>1. ความหมายของ AI ในเกม</h2><p>AI ในเกมคือระบบที่ทำให้ตัวละครหรือระบบภายในเกมสามารถตอบสนอง ตัดสินใจ และปรับพฤติกรรมตามสถานการณ์ได้ โดยไม่จำเป็นต้องมีผู้เล่นควบคุมทุกอย่าง</p>
+<div class="card-grid"><div class="card"><div class="card-icon">01</div><h3>รับรู้สถานการณ์</h3><p>ตรวจจับผู้เล่น ศัตรู สิ่งกีดขวาง หรือเหตุการณ์ภายในเกม</p></div><div class="card"><div class="card-icon">02</div><h3>ประมวลผล</h3><p>ตรวจสอบข้อมูลและเงื่อนไขก่อนเลือกการกระทำ</p></div><div class="card"><div class="card-icon">03</div><h3>ตัดสินใจ</h3><p>เลือกว่าจะเดิน โจมตี ป้องกัน หลบหนี หรือทำภารกิจ</p></div><div class="card"><div class="card-icon">04</div><h3>ตอบสนอง</h3><p>ดำเนินการและเปลี่ยนพฤติกรรมตามสถานการณ์ที่เกิดขึ้น</p></div></div>
+<div class="process"><div class="process-box">รับข้อมูล</div><div class="arrow">→</div><div class="process-box">วิเคราะห์</div><div class="arrow">→</div><div class="process-box">ตัดสินใจ</div><div class="arrow">→</div><div class="process-box">ลงมือทำ</div></div></section>
+
+<section id="npc"><p class="label">Section 02</p><h2>2. AI ของตัวละคร NPC</h2><p>NPC หรือ Non-Player Character คือตัวละครที่ไม่ได้ถูกควบคุมโดยผู้เล่นโดยตรง เช่น ศัตรู เพื่อนร่วมทีม หรือชาวเมือง AI ช่วยให้ NPC มองเห็นผู้เล่น ตอบสนองต่อเหตุการณ์ และเลือกการกระทำได้</p>
+<figure class="visual"><img src="images/npc-ai.png" width="1200" height="700" loading="lazy" alt="แผนภาพการตรวจจับและตอบสนองของ NPC"><figcaption>ตัวอย่างลำดับพฤติกรรมของ NPC เมื่อพบผู้เล่น</figcaption></figure>
+<div class="info-box"><strong>ตัวอย่าง:</strong><p>เมื่อ NPC ตรวจพบผู้เล่น ระบบ AI อาจเปลี่ยนจากการเดินลาดตระเวนไปเป็นการไล่ตามและโจมตีผู้เล่น</p></div></section>
+
+<section id="pathfinding"><p class="label">Section 03</p><h2>3. การหาเส้นทาง (Pathfinding)</h2><p>Pathfinding คือวิธีที่ AI เลือกเส้นทางจากจุดหนึ่งไปยังอีกจุดหนึ่ง ช่วยให้ตัวละครหลีกเลี่ยงสิ่งกีดขวางและติดตามเป้าหมายได้</p>
+<figure class="visual"><img src="images/pathfinding.png" width="1200" height="700" loading="lazy" alt="ตัวอย่างแผนที่การหาเส้นทาง A star"><figcaption>ตัวอย่างเส้นทางจากจุดเริ่มต้นไปยังเป้าหมายโดยหลีกเลี่ยงสิ่งกีดขวาง</figcaption></figure>
+<div class="info-box"><strong>A* Pathfinding</strong><p>A* เป็นตัวอย่างอัลกอริทึมที่ใช้สำหรับค้นหาเส้นทางและพบได้บ่อยในการพัฒนาเกม</p></div></section>
+
+<section id="decision"><p class="label">Section 04</p><h2>4. การตัดสินใจของ AI</h2><p>เกมสามารถใช้ระบบเพื่อกำหนดพฤติกรรมของ AI เช่น State Machine และ Behavior Tree ซึ่งช่วยให้ AI เลือกว่าจะโจมตี หลบหนี ป้องกัน หรือทำภารกิจตามเงื่อนไขที่เกิดขึ้น</p>
+<div class="dual-visual"><figure class="visual"><img src="images/state-machine.png" width="1200" height="700" loading="lazy" alt="แผนภาพ State Machine"><figcaption>State Machine: เปลี่ยนสถานะตามเหตุการณ์</figcaption></figure><figure class="visual"><img src="images/behavior-tree.png" width="1200" height="700" loading="lazy" alt="แผนภาพ Behavior Tree"><figcaption>Behavior Tree: ตรวจสอบเงื่อนไขเป็นลำดับ</figcaption></figure></div></section>
+
+<section id="generation"><p class="label">Section 05</p><h2>5. การสร้างเนื้อหาแบบอัตโนมัติ</h2><p>AI หรือ Procedural Generation สามารถช่วยสร้างแผนที่ ด่าน ภารกิจ หรือเหตุการณ์แบบสุ่ม ทำให้เกมมีความหลากหลายและเล่นซ้ำได้มากขึ้น</p>
+<figure class="visual"><img src="images/procedural-generation.png" width="1200" height="700" loading="lazy" alt="ภาพประกอบ Procedural Generation"><figcaption>ตัวอย่างประเภทของเนื้อหาที่สามารถสร้างแบบอัตโนมัติได้</figcaption></figure></section>
+
+<section id="development"><p class="label">Section 06</p><h2>6. AI ช่วยในการพัฒนาเกม</h2><p>AI สามารถช่วยนักพัฒนาในงานหลายขั้นตอนของการสร้างเกมได้</p>
+<figure class="visual"><img src="images/ai-development.png" width="1200" height="700" loading="lazy" alt="ภาพประกอบการใช้ AI ช่วยพัฒนาเกม"><figcaption>AI สามารถเป็นเครื่องมือช่วยงานได้หลายส่วนของการพัฒนาเกม</figcaption></figure>
+<ul class="custom-list"><li>สร้างแนวคิดและช่วยออกแบบระบบเกม</li><li>ช่วยเขียนโค้ดต้นแบบ</li><li>ช่วยทดสอบเกม</li><li>ช่วยค้นหาบั๊ก</li><li>ช่วยสร้างบทสนทนา</li><li>ช่วยออกแบบเนื้อหา</li></ul></section>
+
+<section id="benefits"><p class="label">Section 07</p><h2>7. ประโยชน์และข้อจำกัดของ AI ในเกม</h2><div class="compare"><div class="good"><h3>ประโยชน์</h3><ul class="custom-list"><li>ทำให้เกมสมจริงขึ้น</li><li>ลดงานบางส่วนของนักพัฒนา</li><li>เพิ่มความหลากหลายของเกม</li><li>ช่วยให้ NPC ตอบสนองต่อสถานการณ์ได้</li></ul></div><div class="bad"><h3>ข้อจำกัด</h3><ul class="custom-list"><li>AI อาจตัดสินใจผิด</li><li>อาจใช้ทรัพยากรของระบบสูง</li><li>อาจทำให้ประสบการณ์ผู้เล่นไม่สมดุล</li><li>ต้องออกแบบและทดสอบอย่างเหมาะสม</li></ul></div></div></section>
+
+<section id="future"><p class="label">Section 08</p><h2>8. อนาคตของ AI ในวงการเกม</h2><figure class="visual"><img src="images/future-ai.png" width="1200" height="700" loading="lazy" alt="ภาพแนวคิดอนาคต AI ในเกม"><figcaption>แนวโน้มของ AI ที่อาจทำให้ประสบการณ์เล่นเกมเฉพาะบุคคลมากขึ้น</figcaption></figure><div class="future"><h3>Future Game AI</h3><p>ในอนาคต AI อาจช่วยสร้าง NPC ที่ตอบสนองต่อผู้เล่นได้เป็นธรรมชาติมากขึ้น ปรับระดับความยากตามความสามารถของผู้เล่น และสร้างประสบการณ์ที่แตกต่างกันสำหรับผู้เล่นแต่ละคน</p></div></section>
+
+<section id="summary" class="summary" aria-labelledby="summary-title"><h2 id="summary-title">สรุป</h2><p>AI เป็นเทคโนโลยีสำคัญที่ช่วยทำให้เกมมีความฉลาด สมจริง และมีความหลากหลายมากขึ้น ทั้งในด้านการควบคุมตัวละคร การสร้างเนื้อหา และการช่วยพัฒนาเกม แต่ยังต้องออกแบบอย่างเหมาะสมเพื่อให้เกมสนุก ยุติธรรม และไม่สร้างปัญหาให้กับผู้เล่น</p><a href="#top" class="top-button">กลับด้านบน</a></section>
+</article></main>
+<footer><p><strong>จัดทำโดย</strong><br>นายธนกฤต สุวรรณ์วงค์<br>ม.6/1 เลขที่ 18<br><br>โรงเรียนรัตนราษฎร์บำรุง<br>วิชาวิทยาการคำนวณ</p></footer>
+</div></body></html>
